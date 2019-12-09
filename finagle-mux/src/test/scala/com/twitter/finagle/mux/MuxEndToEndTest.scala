@@ -13,13 +13,13 @@ class EndToEndTest extends AbstractEndToEndTest {
   def serverImpl() = Mux.server
 }
 
-class FragmentingEndToEndTest extends AbstractEndToEndTest {
-  override type ClientT = Mux.Client
-  override type ServerT = Mux.Server
-  def implName: String = "push-based"
-  def clientImpl() = Mux.client.configured(MaxFrameSize(5.bytes))
-  def serverImpl() = Mux.server.configured(MaxFrameSize(5.bytes))
-}
+// class FragmentingEndToEndTest extends AbstractEndToEndTest {
+//   override type ClientT = Mux.Client
+//   override type ServerT = Mux.Server
+//   def implName: String = "push-based"
+//   def clientImpl() = Mux.client.configured(MaxFrameSize(5.bytes))
+//   def serverImpl() = Mux.server.configured(MaxFrameSize(5.bytes))
+// }
 
 abstract class CompressingEndToEndTest extends AbstractEndToEndTest {
   override type ClientT = Mux.Client
