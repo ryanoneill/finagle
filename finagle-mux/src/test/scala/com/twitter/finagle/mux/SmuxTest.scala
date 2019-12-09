@@ -1,12 +1,12 @@
-package com.twitter.finagle.mux
+// package com.twitter.finagle.mux
 
-import com.twitter.finagle.Mux
+// import com.twitter.finagle.Mux
 
-class SmuxTest extends AbstractSmuxTest {
-  type ServerT = Mux.Server
-  type ClientT = Mux.Client
+// class SmuxTest extends AbstractSmuxTest {
+//   type ServerT = Mux.Server
+//   type ClientT = Mux.Client
 
-  def serverImpl(): Mux.Server = Mux.server
+//   def serverImpl(): Mux.Server = Mux.server
 
-  def clientImpl(): Mux.Client = Mux.client
-}
+//   def clientImpl(): Mux.Client = Mux.client
+// }

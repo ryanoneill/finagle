@@ -13,7 +13,6 @@ env:
 
   matrix:
     - PROJECT=finagle-mux
-    - PROJECT=finagle-thriftmux
 
 matrix:
   # Does not allow for assigning a build result if the non-'allow_failures' targets are complete
@@ -47,12 +46,10 @@ before_cache:
   - find $HOME/.sbt         -name "*.lock"               -delete
 
 scala:
-  - 2.11.12
   - 2.12.8
 
 jdk:
   - openjdk8
-  - openjdk11
 
 notifications:
   slack:
