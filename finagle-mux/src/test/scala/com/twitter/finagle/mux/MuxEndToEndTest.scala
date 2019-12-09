@@ -45,19 +45,19 @@ abstract class CompressingEndToEndTest extends AbstractEndToEndTest {
   protected val accepted = preferences(CompressionLevel.Accepted)
 }
 
-class CompressionEnabledTest extends CompressingEndToEndTest {
-  def implName: String = "compression-enabled"
+// class CompressionEnabledTest extends CompressingEndToEndTest {
+//   def implName: String = "compression-enabled"
 
-  def clientImpl() = Mux.client.configured(desired)
-  def serverImpl() = Mux.server.configured(desired)
-}
+//   def clientImpl() = Mux.client.configured(desired)
+//   def serverImpl() = Mux.server.configured(desired)
+// }
 
-class CompressionClientAcceptingTest extends CompressingEndToEndTest {
-  def implName: String = "compression-client-enabled"
+// class CompressionClientAcceptingTest extends CompressingEndToEndTest {
+//   def implName: String = "compression-client-enabled"
 
-  def clientImpl() = Mux.client.configured(accepted)
-  def serverImpl() = Mux.server.configured(desired)
-}
+//   def clientImpl() = Mux.client.configured(accepted)
+//   def serverImpl() = Mux.server.configured(desired)
+// }
 
 class CompressionServerAcceptingTest extends CompressingEndToEndTest {
   def implName: String = "compression-client-enabled"
@@ -66,16 +66,16 @@ class CompressionServerAcceptingTest extends CompressingEndToEndTest {
   def serverImpl() = Mux.server.configured(accepted)
 }
 
-class CompressionClientDisabledTest extends CompressingEndToEndTest {
-  def implName: String = "compression-client-enabled"
+// class CompressionClientDisabledTest extends CompressingEndToEndTest {
+//   def implName: String = "compression-client-enabled"
 
-  def clientImpl() = Mux.client
-  def serverImpl() = Mux.server.configured(desired)
-}
+//   def clientImpl() = Mux.client
+//   def serverImpl() = Mux.server.configured(desired)
+// }
 
-class CompressionServerDisabledTest extends CompressingEndToEndTest {
-  def implName: String = "compression-server-enabled"
+// class CompressionServerDisabledTest extends CompressingEndToEndTest {
+//   def implName: String = "compression-server-enabled"
 
-  def clientImpl() = Mux.client.configured(desired)
-  def serverImpl() = Mux.server
-}
+//   def clientImpl() = Mux.client.configured(desired)
+//   def serverImpl() = Mux.server
+// }
