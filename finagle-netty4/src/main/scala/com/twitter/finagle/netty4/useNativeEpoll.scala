@@ -23,9 +23,7 @@ import com.twitter.app.GlobalFlag
  * @see https://netty.io/wiki/native-transports.html
  */
 private object useNativeEpoll
-    // TODO: Undo -- This is temporary
-    // extends GlobalFlag[Boolean](true, "Use Linux's native epoll transport, when available") {
-    extends GlobalFlag[Boolean](false, "Use Linux's native epoll transport, when available") {
+    extends GlobalFlag[Boolean](true, "Use Linux's native epoll transport, when available") {
 
   @volatile private var overrideValue = Option.empty[Boolean]
 
