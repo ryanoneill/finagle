@@ -111,13 +111,14 @@ object RequestLogger {
  */
 private class RequestLogger(logger: Logger, label: String, name: String, nowNanos: () => Long) {
 
-  def shouldTrace: Boolean =
-    logger.isLoggable(Level.TRACE)
+  def shouldTrace: Boolean = true
+    // logger.isLoggable(Level.TRACE)
 
   def start(): Long = {
     val start = nowNanos()
     val traceId = Trace.id
-    logger.trace(s"traceId=$traceId $label $name begin")
+    // logger.trace(s"traceId=$traceId $label $name begin")
+    logger.info(s"traceId=$traceId $label $name begin")
     start
   }
 
@@ -125,7 +126,8 @@ private class RequestLogger(logger: Logger, label: String, name: String, nowNano
     future.ensure {
       val traceId = Trace.id
       val elapsedUs = elapsedMicros(startNanos)
-      logger.trace(s"traceId=$traceId $label $name end cumulative async elapsed $elapsedUs us")
+      // logger.trace(s"traceId=$traceId $label $name end cumulative async elapsed $elapsedUs us")
+      logger.info(s"traceId=$traceId $label $name end cumulative async elapsed $elapsedUs us")
     }
   }
 
