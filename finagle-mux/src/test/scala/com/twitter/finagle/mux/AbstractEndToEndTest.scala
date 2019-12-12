@@ -33,6 +33,7 @@ abstract class AbstractEndToEndTest
   type ServerT <: ListeningStackServer[Request, Response, ServerT]
 
   def implName: String
+  def skipWholeTest: Boolean = false
   def clientImpl(): ClientT
   def serverImpl(): ServerT
   def await[A](f: Future[A]): A = Await.result(f, 5.seconds)
@@ -53,7 +54,9 @@ abstract class AbstractEndToEndTest
 
   // turn off failure detector since we don't need it for these tests.
   override def test(testName: String, testTags: Tag*)(f: => Any)(implicit pos: Position): Unit = {
-    super.test(testName, testTags: _*) {
+    if (skipWholeTest)
+      ignore(testName)(f)
+    else super.test(testName, testTags: _*) {
       liveness.sessionFailureDetector.let("none") { f }
     }
   }
