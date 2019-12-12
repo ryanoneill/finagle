@@ -4,7 +4,6 @@ import com.twitter.conversions.StorageUnitOps._
 import com.twitter.finagle.Mux
 import com.twitter.finagle.Mux.param.{MaxFrameSize, CompressionPreferences}
 import com.twitter.finagle.mux.transport.{Compression, CompressionLevel}
-import org.scalatest.Tag
 
 class EndToEndTest extends AbstractEndToEndTest {
   override type ClientT = Mux.Client
@@ -26,11 +25,7 @@ abstract class CompressingEndToEndTest extends AbstractEndToEndTest {
   override type ClientT = Mux.Client
   override type ServerT = Mux.Server
 
-  override def test(testName: String, testTags: Tag*)(f: => Any): Unit = {
-    if (!sys.props.contains("SKIP_FLAKY_TRAVIS")) {
-      super.test(testName, testTags)(f)
-    }
-  }
+  override def skipWholeTest = sys.props.contains("SKIP_FLAKY_TRAVIS")
 
   private[this] val compressor = Seq(Compression.lz4Compressor(highCompression = true))
   private[this] val decompressor = Seq(Compression.lz4Decompressor())
