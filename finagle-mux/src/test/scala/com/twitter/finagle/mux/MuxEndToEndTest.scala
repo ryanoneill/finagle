@@ -1,9 +1,10 @@
 package com.twitter.finagle.mux
 
 import com.twitter.conversions.StorageUnitOps._
+import com.twitter.finagle.Mux
 import com.twitter.finagle.Mux.param.{MaxFrameSize, CompressionPreferences}
 import com.twitter.finagle.mux.transport.{Compression, CompressionLevel}
-import com.twitter.finagle.Mux
+import org.scalatest.Tag
 
 class EndToEndTest extends AbstractEndToEndTest {
   override type ClientT = Mux.Client
